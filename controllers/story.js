@@ -1,4 +1,5 @@
 const Story = require('../models/story');
+const { clearKey } = require("../utils/cache");
 
 
 
@@ -11,7 +12,7 @@ const Story = require('../models/story');
 exports.listAllStories = async (req, res) =>{
 	try{
 		//List all stories in descending order => most recent to less recent
-		const stories = await Story.find({}).sort({timeStamp: 'desc'}) ;
+		const stories = await Story.find({}).sort({timeStamp: 'desc'}).cache({time: 1000000}) ;
 		return res.json({
 			status: true,
 			message: "Stories successfully listed",
@@ -45,6 +46,7 @@ exports.createStory = async (req, res) =>{
 		})
 	
 		newStory.save((err, results)=>{
+			clearKey(Story.collection.collectionName);
             return res.status(200).json({ 
                 success: true,
                 message: 'Story successfully created',
@@ -75,7 +77,8 @@ exports.editStory = async (req, res) =>{
 
 		}}, (err, story) => {
 			if(!err) {
-					res.status(200).json({ 
+				clearKey(Story.collection.collectionName);
+				return res.status(200).json({ 
 					success: true,
 					message: 'Story successfully updated',
 					data: story
@@ -102,6 +105,7 @@ exports.deleteStory = async (req, res) =>{
 	var storyId = req.params.id;
     try{
         await Story.findByIdAndRemove(storyId, (err, story)=>{
+        	clearKey(Story.collection.collectionName);
             return res.status(200).json({
                 success: true,
                 message: 'Story successfully deleted',

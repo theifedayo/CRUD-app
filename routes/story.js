@@ -1,5 +1,4 @@
 const story = require('../controllers/story');
-const middleware = require('../middlewares/cache');
 const express = require('express');
 const router = express.Router();
 

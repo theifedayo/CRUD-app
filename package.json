@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "unit-tests": "",
-    "integration-tests": ""
+    "unit-tests": "mocha test/unit-tests.js",
+    "integration-tests": "mocha --exit tests/integration-tests.js"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +19,12 @@
     "debug": "^4.3.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "mongoose": "^5.13.3",
     "pm2": "^5.1.0",
     "redis": "^3.1.2",
-    "redis-cli": "^2.1.0"
+    "redis-cli": "^2.1.0",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "eslint": "^7.31.0",
