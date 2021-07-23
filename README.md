@@ -44,16 +44,12 @@ Response data are formatted as JSON and returned in this structure
 	{
 		"success": [boolean],
 		"message": [string],
-		"data": [List] || [Object]
+		"data": [List] or [Object]
 	}
 
 
 ## Test
-Run the following commands to run unit tests:
-```shell
-$npm run unit-tests
-```
-and integration tests:
+Run the following command to run tests:
 ```shell
 $npm run integration-tests
 ```
