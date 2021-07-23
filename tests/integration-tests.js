@@ -1,3 +1,5 @@
+//author: Ifedayo Adesiyan 2021
+
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../app');
@@ -9,10 +11,11 @@ chai.use(chaiHttp);
 
 
 
-describe('CRUD app', () => {
+describe('CRUD app - Integration tests', () => {
 
 
     //Test GET Route
+    
     describe("GET /api/v1/s/list-all-stories", () => {
         it("It should GET all the stories", (done) => {
             chai.request(app)
@@ -116,7 +119,6 @@ describe('CRUD app', () => {
                 done();
             });
         });
-
     });
 
 

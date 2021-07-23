@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const keys = require("../config/config.env");
 
 
+
 dotenv.config({path: './config/config.env'});
 
 
@@ -23,7 +24,7 @@ const client = redis.createClient({
 
 client.hget = util.promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
-mongoose.Query.prototype.cache = function(options = { time: 60 }) {
+mongoose.Query.prototype.cache = (options = { time: 60 }) => {
   this.useCache = true;
   this.time = options.time;
   this.hashKey = JSON.stringify(options.key || this.mongooseCollection.name);
@@ -34,7 +35,7 @@ mongoose.Query.prototype.cache = function(options = { time: 60 }) {
 //check if data is stored already in redis, if it 
 //isn't we cache else we return cached data
 
-mongoose.Query.prototype.exec = async function() {
+mongoose.Query.prototype.exec = async () => {
   if (!this.useCache) {
     return await exec.apply(this, arguments);
   }
