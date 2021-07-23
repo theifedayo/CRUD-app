@@ -12,7 +12,7 @@ router.get('/list-all-stories',  story.listAllStories); //add middleware
 
 router.post('/create-story',  story.createStory);
 
-router.put('/edit-story/:id',  story.editStory);
+router.put('/update-story/:id',  story.updateStory);
 
 router.delete('/delete-story/:id',  story.deleteStory);
 

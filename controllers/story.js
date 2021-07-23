@@ -67,8 +67,8 @@ exports.createStory = async (req, res) =>{
 
 
 //PUT
-///api/v1/s/edit-story/:id
-exports.editStory = async (req, res) =>{
+///api/v1/s/update-story/:id
+exports.updateStory = async (req, res) =>{
 	var storyId = req.params.id;
 	try{
 		await Story.findOneAndUpdate({"_id": storyId}, {$set: {
@@ -76,14 +76,21 @@ exports.editStory = async (req, res) =>{
 			content: req.body.content, 
 
 		}}, (err, story) => {
-			if(!err) {
-				clearKey(Story.collection.collectionName);
-				return res.status(200).json({ 
-					success: true,
-					message: 'Story successfully updated',
-					data: story
-				});
-			}			
+			if(err){
+        		return res.status(404).json({
+	                success: false,
+	                message: 'Story was not updated',
+	                data: story
+	            }); 
+        	}
+		
+			clearKey(Story.collection.collectionName);
+			return res.status(200).json({ 
+				success: true,
+				message: 'Story successfully updated',
+				data: story
+			});
+					
 		});
 	}catch(err){
 		//catch all errors in editStory function
@@ -104,7 +111,15 @@ exports.editStory = async (req, res) =>{
 exports.deleteStory = async (req, res) =>{
 	var storyId = req.params.id;
     try{
+
         await Story.findByIdAndRemove(storyId, (err, story)=>{
+        	if(err){
+        		return res.status(404).json({
+	                success: false,
+	                message: 'Story was not deleted',
+	                data: story
+	            }); 
+        	}
         	clearKey(Story.collection.collectionName);
             return res.status(200).json({
                 success: true,

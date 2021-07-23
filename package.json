@@ -1,12 +1,11 @@
 {
   "name": "CRUD-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "a simple CRUD API",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "unit-tests": "mocha test/unit-tests.js",
     "integration-tests": "mocha --exit tests/integration-tests.js"
   },
   "keywords": [],
@@ -27,7 +26,10 @@
     "util": "^0.12.4"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "eslint": "^7.31.0",
+    "mocha": "^9.0.2",
     "nodemon": "^2.0.12"
   }
 }

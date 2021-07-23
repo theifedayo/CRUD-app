@@ -34,7 +34,7 @@ npm start
 |:------------- | :----------: |:----------: |
 |`/api/v1/s/list-all-stories`|return all stories|GET|
 |`/api/v1/s/create-story`|add a new story|POST|
-|`/api/v1/s/edit-story/:id`|edit a story by its ID|PUT|
+|`/api/v1/s/update-story/:id`|update a story by its ID|PUT|
 |`/api/v1/s/delete-story/:id`|delete a story by its ID|DELETE|
 
 
