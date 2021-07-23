@@ -6,18 +6,18 @@ This is a simple CRUD-Create Read Update & Delete application built with a minds
 
 Run the following command to install the required packages in package.json file:
 ```shell
-$npm install
+npm install
 ```
 Also make sure Redis server is installed on your computer : https://redis.io/topics/quickstart
 
 When all has been installed, you can start the express server by running simultaneously:
 
 ```shell
-$redis-server
+redis-server
 ```
 with nodemon
 ```shell
-$npm run dev
+npm run dev
 ```
 or without nodemon:
 ```shell
@@ -51,7 +51,7 @@ Response data are formatted as JSON and returned in this structure
 ## Test
 Run the following command to run tests:
 ```shell
-$npm run integration-tests
+npm run integration-tests
 ```
 ## Stack Choice
 
